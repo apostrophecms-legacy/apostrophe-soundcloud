@@ -1,0 +1,18 @@
+{% extends "baseWidgetEditor.html" %}
+
+{% block widgetVars %}
+  {% set widgetClass = 'apos-soundcloud-editor' %}
+{% endblock %}
+
+{% block title %}
+  Button
+{% endblock %}
+
+{% block instructions %}
+  Enter the URL of your soundcloud sound.
+{% endblock %}
+
+{% block formBody %}
+  <label>URL</label>
+  <input class="apos-soundcloud-url" type="text" name="url" />
+{% endblock %}
