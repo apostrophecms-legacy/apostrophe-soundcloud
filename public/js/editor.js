@@ -16,8 +16,12 @@ function AposSoundcloudWidgetEditor(options) {
 
   // Override methods
   self.afterCreatingEl = function() {
+    // url field
     self.$url = self.$el.find('.apos-soundcloud-url');
     self.$url.val(self.data.url);
+    // type dropdown
+    self.$display_type = self.$el.find('.apos-soundcloud-display_type');
+    self.$url.val(self.data.display_type);
   };
 
   self.prePreview = beforeUpdate;
@@ -27,6 +31,7 @@ function AposSoundcloudWidgetEditor(options) {
     self.exists = !!self.$url.val();
     if (self.exists) {
       self.data.url = self.$url.val();
+      self.data.display_type = self.$display_type.val();
     }
 
     return callback();

@@ -13,6 +13,8 @@ function Construct(options, callback) {
   var clientId = options.clientId;
   self._dirs = (options.dirs || []).concat([ __dirname ]);
 
+  //self._apos.mixinModuleAssets(self, 'moderator', __dirname, options);
+
   self.pushAsset = function(type, name, optionsArg) {
     var options = {};
     extend(true, options, optionsArg);
@@ -23,14 +25,17 @@ function Construct(options, callback) {
 
   // Include our editor template in the markup when aposTemplates is called
   self.pushAsset('template', 'soundcloudEditor', { when: 'user' });
-
   // Make sure that aposScripts and aposStylesheets summon our assets
   self.pushAsset('script', 'soundcloud', { when: 'always' });
   self.pushAsset('script', 'content', { when: 'always' });
   self.pushAsset('script', 'editor', { when: 'user' });
-  self.pushAsset('stylesheet', 'content', { when: 'always' });
   self.pushAsset('script', 'waveform', { when: 'always' });
-
+  self.pushAsset('script', 'soundmanager2', { when: 'always' });  
+  self.pushAsset('script', 'berniecode-animator', { when: 'always'});
+  self.pushAsset('script', '360player', { when: 'always' });
+  self.pushAsset('stylesheet', '360player', { when: 'always' });
+  self.pushAsset('stylesheet', 'content', { when: 'always' });
+  
   app.get('/apos-soundcloud/*', apos.static(__dirname + '/public'));
   apos.itemTypes.soundcloud = {
     widget: true,

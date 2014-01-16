@@ -5,14 +5,22 @@
 {% endblock %}
 
 {% block title %}
-  Button
+  Soundcloud
 {% endblock %}
 
+
 {% block instructions %}
-  Enter the URL of your soundcloud sound.
+  Select the widget type and provide a url.
 {% endblock %}
 
 {% block formBody %}
-  <label>URL</label>
-  <input class="apos-soundcloud-url" type="text" name="url" />
+	<label>TYPE</label>
+		  <select class="apos-soundcloud-display_type">
+			  <option value="waveform">Waveform</option>
+			  <option value="360">360</option>
+		  </select>
+
+	<br>
+	<label>URL</label>
+  <input class="apos-soundcloud-url" type="text" name="url" />	  
 {% endblock %}

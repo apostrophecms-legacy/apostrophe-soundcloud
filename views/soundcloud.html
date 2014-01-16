@@ -1,12 +1,26 @@
 <script>
-  hydrateSoundclouds({ clientId: '{{ options.clientId }}', url: '{{ item.url }}' })
+  hydrateSoundclouds({ clientId: '{{ options.clientId }}', url: '{{ item.url }}', display_type: '{{ item.display_type }}' })
 </script>
 
-<div class="apos-soundcloud-container" >
-	<div id='waveform'></div>
-
+{% if item.display_type == "waveform" %}
+  <div class="apos-soundcloud-container" >
 	<section id="controls">
 	    <i id="playpause" class="icon-play"></i>
-	    <i id="mute">mute</i>
+<!-- 	    <i id="mute">mute</i> -->
+	    <i id="heart" class="icon-heart"></i>
+	    <a target="_blank" href="http://soundcloud.com"><i id="soundcloud" class="icon-share"></i></a>
 	</section>
+
+	<div id='waveform'></div>
+	</div>
+
+{% elif item.display_type == "360" %}
+
+<div style="width: 50px; margin: 0 auto;">
+<div class="ui360" >
+ <a id="360_track" type="audio/mp3" href=""></a>
 </div>
+</div>
+
+{% endif %}
+

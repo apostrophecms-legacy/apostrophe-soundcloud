@@ -15,13 +15,15 @@
   },
   "license": "MIT",
   "dependencies": {
-    "extend": "*"
+    "extend": "*",
+    "async": "x"
   },
   "bugs": {
     "url": "https://github.com/punkave/apostrophe-soundcloud/issues"
   },
   "homepage": "https://github.com/punkave/apostrophe-soundcloud",
-  "devDependencies": {},
+  "devDependencies": {
+    },
   "keywords": [
     "soundcloud",
     "cms",
