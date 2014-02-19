@@ -7,31 +7,33 @@
 }    
 
 #waveform {
-    width: auto;
+    width: 70%;
     height: 100px;
-    margin: 30px 30px 0px 30px;        
+    margin: 10px auto 15px auto;        
 }
 #waveform:hover {
     cursor: pointer;
 }
+.episode-marquee-sc {
+  i {
+      color: #272727;
+      font-size: 1.1em;
+      position: relative;
+      display: inline-block !important;
+      cursor: pointer;    
+      padding: 10px;
+      text-align: center;
+      margin: auto;
+  }
 
-i {
-    font-size: 14px;
-    display: inline-block !important;
-    cursor: pointer;
-    border: 1px solid black;
-    padding: 10px 10px 10px;
-    text-align: center;
-    margin: 10px auto;
-}
-
-i:hover {
-    color: whiteSmoke;
-    border-color: whiteSmoke;
+  i:hover {
+      color: whiteSmoke;
+      border-color: whiteSmoke;
+  }
 }
 
 .player_button {
-    border-color: #F60;
+    border-color: whiteSmoke;
     color: #F60;
 }
 
@@ -42,4 +44,30 @@ i:hover {
 .player_button:before {
     color: #F60;
 }
+
+.bg-circle {
+    
+   display: inline-block;
+   position: fixed;
+   cursor: pointer;
+   width: 38px;
+   height: 38px;
+   margin-right: 15px;
+   position: relative;
+   background: rgba(180,180,180,0.65); 
+   -moz-border-radius: 70px; 
+   -webkit-border-radius: 70px; 
+   border-radius: 70px;
+}
+.bg-circle:hover i{
+    color: whiteSmoke;
+    border-color: whiteSmoke; 
+}
+
+// override for the editor modal
+.apos-modal-body .apos-soundcloud-container {
+      height: 0px;
+      display: none;
+  }
+
 

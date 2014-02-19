@@ -1,37 +1,44 @@
 function hydrateSoundclouds(options) {
 /*  var async = require('async');*/
 
-  var track_url = options.url
+  var track_url = options.url,
       display_type = options.display_type,
-      _client_id = "ef055f9491c6ba9ecd4b2434a8994019";
-
-  if (display_type == 'waveform'){
-        SC.initialize({
+      _client_id = options.clientId,
+      track_name = track_url.substring(track_url.lastIndexOf("/") + 1);
+      
+      SC.initialize({
         client_id: _client_id,
         redirect_uri: "http://example.com/callback.html",
       });
-    
-      SC.get("/resolve", {url: track_url}, function(track){
+
+  if (display_type == 'waveform'){  // WAVEFORM
+        
+        SC.get("/resolve", {url: track_url}, function(track){
         var waveform = new Waveform({
           container: document.getElementById("waveform"),
-          innerColor: "rgba(242,244,244,0.7)"
+          interpolate: false
         });
+        var ctx = waveform.context;  
+        var gradient = ctx.createLinearGradient(0, 0, 0, waveform.height);
+        gradient.addColorStop(0.0, "rgba(255,255,255,0.7)");
+        gradient.addColorStop(1.0, "rgba(180,180,180 ,0.6)");
+        waveform.innerColor = gradient;
 
         waveform.dataFromSoundCloudTrack(track);
         var streamOptions = waveform.optionsForSyncedStream();
         SC.stream(track.uri, streamOptions, function(scplayer){
           // waveform
-/*          waveform.update({innerColor: "rgba(242,244,244,0.7)"});*/
           $("#waveform").click(function(e) {
             e.preventDefault();
             scplayer.togglePause();
             $('#playpause').toggleClass('icon-play icon-pause');
+
           });
           // play button
-          $("#playpause").click(function(e) {
+          $("#playpause-wrapper").click(function(e) {
             e.preventDefault();
                 scplayer.togglePause();
-                $(this).toggleClass('icon-play icon-pause');
+                $("#playpause").toggleClass('icon-play icon-pause');
           });
           // mute button
 /*          $("#mute").click(function(e) {
@@ -43,27 +50,61 @@ function hydrateSoundclouds(options) {
           $("a[href='http://soundcloud.com']").attr('href', track_url);
         });
       });
-  } else {
-      SC.initialize({
-            client_id: _client_id,
-            redirect_uri: "http://example.com/callback.html",
-          });
+    
+  } else if (display_type == '360') { 
 
-      SC.get("/resolve", {url: track_url}, function(track){
+    console.log("init 360 type"); 
 
-        $('#360_track').attr('href', track.uri + "/stream?client_id=" + _client_id);
-        });
-
-      soundManager.setup({
-        url: 'swf/',
-        flashVersion: 9, // optional: shiny features (default = 8)
-        // optional: ignore Flash where possible, use 100% HTML5 mode
-        preferFlash: false,
-
-        onready: function() {
-
-        }
+    SC.get("/resolve", {url: track_url}, function(res, err){
+      var url = res.uri + "/stream?client_id=" + _client_id;
+      $('#track').attr('href', url);
+      $.get(url, function( data ) {
+        console.log( "Data Loaded: " + data.redirect );
       });
+
+    }); // SC.get
+
+
+    soundManager.setup({
+      url: 'soundmanagerv297a-20131201/swf/',
+      flashVersion: 9, // optional: shiny features (default = 8)
+      // optional: ignore Flash where possible, use 100% HTML5 mode
+      preferFlash: false,
+      onready: function() {
+
+      }
+    });
+
+
+
+  } else { // SOUNDCLOUD EMBED
+
+    var sounds = $("#"+String(track_name));
+    /*console.log(sounds)*/
+    // loop through each soundcloud container and call the
+    // SC.oEmbed method using the data-url attribute on the
+    // element: 
+    sounds.each(function(){
+      var container = $(this);
+      SC.oEmbed(track_url, { auto_play: false }, function(oEmbed) {
+        /*console.log(oEmbed)*/
+        container.html(oEmbed.html);
+      });
+    });
+
+    // old 360 code
+/*      SC.get("/resolve", {url: track_url}, function(track){
+    $('#360_track').attr('href', track.uri + "/stream?client_id=" + _client_id);
+    });
+
+  soundManager.setup({
+    url: 'swf/',
+    flashVersion: 9, 
+    preferFlash: false,
+    onready: function() {
+
+    }
+  });*/
 
     } // ELSE
 

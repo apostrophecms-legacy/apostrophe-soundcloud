@@ -151,6 +151,10 @@
 
     Waveform.prototype.optionsForSyncedStream = function(options) {
       var innerColorWasSet, that;
+      var gradient = this.context.createLinearGradient(0, 0, 0, this.height);
+      gradient.addColorStop(0.0, "rgba(255,255,255,0.7)");
+      gradient.addColorStop(1.0, "rgba(180,180,180 ,0.6)");
+
       if (options == null) {
         options = {};
       }
@@ -164,11 +168,11 @@
             stream = this;
             that.innerColor = function(x, y) {
               if (x < stream.position / stream.durationEstimate) {
-                return options.playedColor || "rgba(255,  102, 0, 0.8)";
+                return "rgba(13, 61, 90,0.78)";  // played color
               } else if (x < stream.bytesLoaded / stream.bytesTotal) {
-                return options.loadedColor || "rgba(0, 0, 0, 0.8)";
+                return gradient;  // loaded color
               } else {
-                return options.defaultColor || "rgba(0, 0, 0, 0.4)";
+                return "rgba(100,100,100 ,0.6)";  // default color
               }
             };
             innerColorWasSet = true;

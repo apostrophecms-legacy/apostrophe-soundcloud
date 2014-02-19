@@ -44,7 +44,7 @@ function Construct(options, callback) {
     icon: 'volume-up',
     render: function(data) {
       data.options.clientId = clientId;
-      console.log(data)
+      /*console.log(data)*/
       return apos.partial('soundcloud', data, self._dirs.map(function(dir) { return dir + '/views'; }) );
     }
   };

@@ -60,15 +60,15 @@ function ThreeSixtyPlayer() {
     playNext: false,   // stop after one sound, or play through list until end
     autoPlay: false,   // start playing the first sound right away
     allowMultiple: false,  // let many sounds play at once (false = only one sound playing at a time)
-    loadRingColor: '#ccc', // how much has loaded
-    playRingColor: '#000', // how much has played
-    backgroundRingColor: '#eee', // color shown underneath load + play ("not yet loaded" color)
+    loadRingColor: 'rgba(255,255,255 , .85)', // how much has loaded
+    playRingColor: 'rgba(95,199,249,1)', // how much has played
+    backgroundRingColor: 'rgba(255,255,255 ,0.65)', // color shown underneath load + play ("not yet loaded" color)
 
     // optional segment/annotation (metadata) stuff..
     segmentRingColor: 'rgba(255,255,255,0.33)', // metadata/annotation (segment) colors
-    segmentRingColorAlt: 'rgba(0,0,0,0.1)',
-    loadRingColorMetadata: '#ddd', // "annotations" load color
-    playRingColorMetadata: 'rgba(128,192,256,0.9)', // how much has played when metadata is present
+    segmentRingColorAlt: 'rgba(0,0,0,0.5)',
+    loadRingColorMetadata: 'rgba(100,100,100 ,0.5)', // "annotations" load color
+    playRingColorMetadata: 'rgba(95,199,249,0.85)', // how much has played when metadata is present
 
     circleDiameter: null, // set dynamically according to values from CSS
     circleRadius: null,
@@ -102,7 +102,7 @@ function ThreeSixtyPlayer() {
 
     fontSizeMax: null, // set according to CSS
 
-    scaleArcWidth: 1,  // thickness factor of playback progress ring
+    scaleArcWidth: 0.5,  // thickness factor of playback progress ring
 
     useFavIcon: false // Experimental (also requires usePeakData: true).. Try to draw a "VU Meter" in the favicon area, if browser supports it (Firefox + Opera as of 2009)
 
@@ -313,11 +313,17 @@ function ThreeSixtyPlayer() {
       pl.removeClass(this._360data.oUIBox,this._360data.className);
       this._360data.className = pl.css.sPlaying;
       pl.addClass(this._360data.oUIBox,this._360data.className);
+
+      // add episode title + band name
+      pl.addClass(this._360data.oUI360,"ui360-showInfo");
       self.fanOut(this);
     },
 
     stop: function() {
       pl.removeClass(this._360data.oUIBox,this._360data.className);
+
+      // remove episode title + band name
+      pl.removeClass(this._360data.oUI360,"ui360-showInfo");
       this._360data.className = '';
       self.fanIn(this);
     },
@@ -840,9 +846,10 @@ function ThreeSixtyPlayer() {
     // loaded ring
     self.drawSolidArc(this._360data.oCanvas,(this._360data.metadata?self.config.loadRingColorMetadata:self.config.loadRingColor),this._360data.width,this._360data.radius * ringScaleFactor,self.deg2rad(fullCircle*(this._360data.lastValues.bytesLoaded/this._360data.lastValues.bytesTotal)),0,true);
 
+    // playing ring
     // don't draw if 0 (full black circle in Opera)
     if (this._360data.lastValues.position !== 0) {
-      self.drawSolidArc(this._360data.oCanvas,(this._360data.metadata?self.config.playRingColorMetadata:self.config.playRingColor),this._360data.width,this._360data.radius * ringScaleFactor,self.deg2rad((this._360data.didFinish===1?fullCircle:fullCircle*(this._360data.lastValues.position/this._360data.lastValues.durationEstimate))),0,true);
+      self.drawSolidArc(this._360data.oCanvas,(this._360data.metadata?self.config.playRingColorMetadata:self.config.playRingColor),this._360data.width*1.05,this._360data.radius * ringScaleFactor*1.5,self.deg2rad((this._360data.didFinish===1?fullCircle:fullCircle*(this._360data.lastValues.position/this._360data.lastValues.durationEstimate))),0,true);
     }
 
     // metadata goes here
