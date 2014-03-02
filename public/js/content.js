@@ -21,7 +21,7 @@ function hydrateSoundclouds(options) {
         var ctx = waveform.context;  
         var gradient = ctx.createLinearGradient(0, 0, 0, waveform.height);
         gradient.addColorStop(0.0, "rgba(255,255,255,0.7)");
-        gradient.addColorStop(1.0, "rgba(180,180,180 ,0.6)");
+        gradient.addColorStop(1.0, "rgba(180,180,180,0.6)");
         waveform.innerColor = gradient;
 
         waveform.dataFromSoundCloudTrack(track);
@@ -48,8 +48,11 @@ function hydrateSoundclouds(options) {
           });*/
           // soundcloud link
           $("a[href='http://soundcloud.com']").attr('href', track_url);
+          // fade in on load
+          //$('.apos-soundcloud-container').css({opacity: 0, visibility: "visible"}).animate({opacity: 1}, "slow");
         });
       });
+      
     
   } else if (display_type == '360') { 
 
