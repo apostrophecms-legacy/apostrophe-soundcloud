@@ -16,7 +16,6 @@ function AposSoundcloudWidgetEditor(options) {
 
   // Override methods
   self.afterCreatingEl = function() {
-<<<<<<< HEAD
     // url field
     self.$url = self.$el.find('.apos-soundcloud-url');
     self.$url.val(self.data.url);
@@ -24,10 +23,6 @@ function AposSoundcloudWidgetEditor(options) {
     self.$display_type = self.$el.find('.apos-soundcloud-display_type');
     self.$display_type.val(self.data.display_type);
 
-=======
-    self.$url = self.$el.find('.apos-soundcloud-url');
-    self.$url.val(self.data.url);
->>>>>>> e4cd0a1771173aef16d29527d6733a1cf07d114c
   };
 
   self.prePreview = beforeUpdate;
@@ -37,11 +32,8 @@ function AposSoundcloudWidgetEditor(options) {
     self.exists = !!self.$url.val();
     if (self.exists) {
       self.data.url = self.$url.val();
-<<<<<<< HEAD
       self.data.track_name = self.data.url.substring(self.data.url.lastIndexOf("/") + 1);
       self.data.display_type = self.$display_type.val();
-=======
->>>>>>> e4cd0a1771173aef16d29527d6733a1cf07d114c
     }
 
     return callback();
