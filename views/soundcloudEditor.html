@@ -9,9 +9,6 @@
 {% endblock %}
 
 
-{% block instructions %}
-  Select the widget type and provide a url.
-{% endblock %}
 
 {% block formBody %}
 	<label>TYPE</label>
@@ -24,4 +21,14 @@
 	<br>
 	<label>URL</label>
   <input class="apos-soundcloud-url" type="text" name="url" />	  
+  Button
+{% endblock %}
+
+{% block instructions %}
+  Enter the URL of your soundcloud sound.
+{% endblock %}
+
+{% block formBody %}
+  <label>URL</label>
+  <input class="apos-soundcloud-url" type="text" name="url" />
 {% endblock %}

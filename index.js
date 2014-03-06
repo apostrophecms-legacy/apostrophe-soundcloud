@@ -13,8 +13,6 @@ function Construct(options, callback) {
   var clientId = options.clientId;
   self._dirs = (options.dirs || []).concat([ __dirname ]);
 
-  //self._apos.mixinModuleAssets(self, 'moderator', __dirname, options);
-
   self.pushAsset = function(type, name, optionsArg) {
     var options = {};
     extend(true, options, optionsArg);
@@ -44,7 +42,6 @@ function Construct(options, callback) {
     icon: 'volume-up',
     render: function(data) {
       data.options.clientId = clientId;
-      /*console.log(data)*/
       return apos.partial('soundcloud', data, self._dirs.map(function(dir) { return dir + '/views'; }) );
     }
   };
@@ -52,4 +49,3 @@ function Construct(options, callback) {
   return setImmediate(function() { return callback(null); });
 }
 
-//LINKED?
