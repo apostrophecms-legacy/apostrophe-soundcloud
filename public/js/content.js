@@ -19,10 +19,14 @@ function hydrateSoundclouds(options) {
           interpolate: false
         });
         var ctx = waveform.context;  
-        var gradient = ctx.createLinearGradient(0, 0, 0, waveform.height);
-        gradient.addColorStop(0.0, "rgba(255,255,255,0.7)");
-        gradient.addColorStop(1.0, "rgba(180,180,180,0.6)");
-        waveform.innerColor = gradient;
+        waveform.innerColor = "rgba(255,255,255,0.8)";
+        /*waveform.innerColor = function(x, y){
+          if (Math.floor(x*500) % 3){
+            return 'rgba(255,255,255,1)';
+          } else {
+            return 'rgba(255,255,255,0.0)';
+          } 
+        },*/
 
         waveform.dataFromSoundCloudTrack(track);
         var streamOptions = waveform.optionsForSyncedStream();

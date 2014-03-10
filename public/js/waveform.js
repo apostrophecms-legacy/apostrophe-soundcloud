@@ -34,6 +34,12 @@
     }
 
     Waveform.prototype.setData = function(data) {
+      //lower sample resolution for bar effect
+/*      for (var i=0; i < data.length; i+=10) {
+        for (var j=0; j < 10; j+=1){
+          data[i+j] = data[i];
+        }
+      }*/
       return this.data = data;
     };
 
@@ -151,9 +157,9 @@
 
     Waveform.prototype.optionsForSyncedStream = function(options) {
       var innerColorWasSet, that;
-      var gradient = this.context.createLinearGradient(0, 0, 0, this.height);
+/*      var gradient = this.context.createLinearGradient(0, 0, 0, this.height);
       gradient.addColorStop(0.0, "rgba(255,255,255,0.7)");
-      gradient.addColorStop(1.0, "rgba(180,180,180 ,0.6)");
+      gradient.addColorStop(1.0, "rgba(180,180,180 ,0.6)");*/
 
       if (options == null) {
         options = {};
@@ -170,7 +176,7 @@
               if (x < stream.position / stream.durationEstimate) {
                 return "rgba(13, 61, 90,0.78)";  // played color
               } else if (x < stream.bytesLoaded / stream.bytesTotal) {
-                return gradient;  // loaded color
+                return "rgba(255,255,255,0.8)";  // loaded color
               } else {
                 return "rgba(100,100,100 ,0.6)";  // default color
               }
