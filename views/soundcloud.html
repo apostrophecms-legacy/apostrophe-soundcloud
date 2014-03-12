@@ -1,9 +1,9 @@
 
 <script>
-  hydrateSoundclouds({ clientId: '{{ options.clientId }}', url: '{{ item.url }}', display_type: '{{ item.display_type }}' })
+  hydrateSoundclouds({ clientId: '{{ options.clientId }}', url: '{{ item.url }}', display_type: '{{ options.display_type }}' })
 </script>
 
-{% if item.display_type == "waveform" %}
+{% if options.display_type == "waveform" %}
   <div class="apos-soundcloud-container">
 	<section id="controls">
 	    <div id="playpause-wrapper" class="bg-circle"><i id="playpause" class="icon-play"></i></div>
@@ -16,14 +16,14 @@
 	<div id='waveform'></div>
 	</div>
 
-{%  elif item.display_type == "360" %}
+{%  elif options.display_type == "360" %}
 
 	<div class="ui360">
 	 <a id="track" type="audio/mp3" href="">play</a>
 	</div>
 
 
-{% elif item.display_type == "Soundcloud-embed" %}
+{% elif options.display_type == "Soundcloud-embed" %}
 	
 	<div class="apos-soundcloud-container"></div>
 
