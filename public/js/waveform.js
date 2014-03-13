@@ -34,7 +34,8 @@
     }
 
     Waveform.prototype.setData = function(data) {
-      //lower sample resolution for bar effect
+      // lower sample resolution for bar effect
+      // should make this responsive to this.canvas.width
 /*      for (var i=0; i < data.length; i+=10) {
         for (var j=0; j < 10; j+=1){
           data[i+j] = data[i];

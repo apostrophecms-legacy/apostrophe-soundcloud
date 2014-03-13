@@ -20,13 +20,14 @@ function hydrateSoundclouds(options) {
         });
         var ctx = waveform.context;  
         waveform.innerColor = "rgba(255,255,255,0.8)";
+        // Bar function
         /*waveform.innerColor = function(x, y){
           if (Math.floor(x*500) % 3){
             return 'rgba(255,255,255,1)';
           } else {
             return 'rgba(255,255,255,0.0)';
           } 
-        },*/
+        }*/
 
         waveform.dataFromSoundCloudTrack(track);
         var streamOptions = waveform.optionsForSyncedStream();
