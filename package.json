@@ -1,6 +1,6 @@
 {
   "name": "apostrophe-soundcloud",
-  "version": "0.0.24",
+  "version": "0.0.25",
   "description": "It's soundcloud for apostrophe.",
   "main": "app.js",
   "scripts": {
