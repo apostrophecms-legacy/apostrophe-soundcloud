@@ -20,6 +20,9 @@ function Construct(options, callback) {
     options.web = '/apos-soundcloud';
     return apos.pushAsset(type, name, options);
   };
+  
+  self._apos = apos;
+  self._apos.mixinModuleAssets(self, 'soundcloud', __dirname, options);
 
   // Include our editor template in the markup when aposTemplates is called
   self.pushAsset('template', 'soundcloudEditor', { when: 'user' });
@@ -33,7 +36,8 @@ function Construct(options, callback) {
   self.pushAsset('script', '360player', { when: 'always' });
   self.pushAsset('stylesheet', '360player', { when: 'always' });
   self.pushAsset('stylesheet', 'content', { when: 'always' });
-  
+
+
   app.get('/apos-soundcloud/*', apos.static(__dirname + '/public'));
   apos.itemTypes.soundcloud = {
     widget: true,
