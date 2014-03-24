@@ -16,6 +16,7 @@
     font-size: 0.8em;
     position:  relative;
     //top: 76px;
+    visibility: hidden;
 }
 
 #waveform {
@@ -25,6 +26,76 @@
 }
 #waveform:hover {
     cursor: pointer;
+    .play-text
+    {
+      color: rgba(0, 0, 0, 0.75);
+    }
+}
+
+.play-text
+{
+  position: absolute;
+  top: 120px;
+  text-align: center;
+  cursor: pointer;
+  width: 70%;
+  margin: 0 auto;
+  .Caecilia-Italic(80%);
+  color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  .transition(all .2s ease-in-out);
+}
+.sc-logo
+{
+  position: absolute;
+  right: 12%;
+  opacity: 0;
+  .transition(opacity .2s ease-in-out);
+  img 
+  {
+    opacity: 0.7;
+    height: 30px;
+    width: 30px; 
+  }
+  img:hover
+  {
+    opacity: 1;
+    .transition(opacity .2s ease-in-out);
+  }
+}
+.volume-container
+{
+  position: absolute;
+  right: 13.3%;
+  bottom: 72px;
+  visibility: hidden;
+
+  #slider{  
+    border-width: 1px;  
+    border-style: solid;  
+    border-color: #777 #777 #333 #777;  
+    border-radius: 10px;  
+    width: 13px;  
+    position: absolute;  
+    height: 50px;  
+    background-color: #8e8d8d;  
+    background: rgba(255, 255, 255, 0.5) repeat top left;  
+    box-shadow: inset 0 1px 5px 0px rgba(0, 0, 0, .5),   
+                   0 1px 0 0px rgba(250, 250, 250, .5);  
+  } 
+  .ui-slider-handle {  
+    position: absolute;  
+    z-index: 2;  
+    width: 25px;  
+    height: 25px;  
+    cursor: pointer;  
+    background: url('/modules/soundcloud/images/soundcloud.png') no-repeat 50% 50%;  
+    font-weight: bold;  
+    color: #1C94C4;  
+    outline: none;  
+    top: -7px;  
+    margin-left: -12px;  
+  }
 }
 .episode-marquee-sc {
   i {

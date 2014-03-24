@@ -34,6 +34,7 @@ function Construct(options, callback) {
   self.pushAsset('script', 'soundmanager2', { when: 'always' });  
   self.pushAsset('script', 'berniecode-animator', { when: 'always'});
   self.pushAsset('script', '360player', { when: 'always' });
+  //self.pushAsset('script', 'sc-player', { when: 'always' });
   self.pushAsset('stylesheet', '360player', { when: 'always' });
   self.pushAsset('stylesheet', 'content', { when: 'always' });
 

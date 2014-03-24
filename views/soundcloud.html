@@ -1,7 +1,9 @@
 
+<!-- <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script> -->
 <script>
   hydrateSoundclouds({ clientId: '{{ options.clientId }}', url: '{{ item.url }}', display_type: '{{ options.display_type }}' })
 </script>
+
 
 {% if options.display_type == "waveform" %}
   <div class="apos-soundcloud-container">
@@ -12,8 +14,18 @@
 	    <a target="_blank" href="http://soundcloud.com"><div id="soundcloud-wrapper" class="bg-circle"><i id="soundcloud" class="icon-share"></i></div></a>
 	    <a target="_blank" href="http://soundcloud.com"><div id="soundcloud-wrapper" class="bg-circle"><i id="soundcloud" class="icon-double-angle-down"></i></div></a>
 	</section>
-
-	<div id='waveform'></div>
+	
+	<div class="sc-logo"><a target="_blank" href="http://soundcloud.com"><img src="/modules/soundcloud/images/soundcloud.png"></a></div>
+	
+	<section class="volume-container">   
+	    <span class="tooltip"></span>   
+	    <div id="slider"></div>
+	    <span class="volume"></span>  
+	</section> 
+	
+	<div id='waveform'>
+		<div class="play-text">Click to Play</div>
+	</div>
 	</div>
 
 {%  elif options.display_type == "360" %}

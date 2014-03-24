@@ -11,7 +11,14 @@ function hydrateSoundclouds(options) {
         redirect_uri: "http://example.com/callback.html",
       });
 
+
+
   if (display_type == 'waveform'){  // WAVEFORM
+
+        /*$( "#slider" ).slider({
+          animate: true,
+          orientation: "vertical"
+       }); */
         
         SC.get("/resolve", {url: track_url}, function(track){
         var waveform = new Waveform({
@@ -20,6 +27,9 @@ function hydrateSoundclouds(options) {
         });
         var ctx = waveform.context;  
         waveform.innerColor = "rgba(255,255,255,0.8)";
+        $('.play-text,.sc-logo').css("opacity", 1);
+
+        //$( "#slider" ).slider();  
         // Bar function
         /*waveform.innerColor = function(x, y){
           if (Math.floor(x*500) % 3){
@@ -37,6 +47,7 @@ function hydrateSoundclouds(options) {
             e.preventDefault();
             scplayer.togglePause();
             $('#playpause').toggleClass('icon-play icon-pause');
+            $('.play-text').css("opacity", 0);
 
           });
           // play button
