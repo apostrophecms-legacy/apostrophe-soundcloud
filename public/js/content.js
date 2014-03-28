@@ -1,5 +1,4 @@
 function hydrateSoundclouds(options) {
-/*  var async = require('async');*/
 
   var track_url = options.url,
       display_type = options.display_type,
@@ -15,11 +14,6 @@ function hydrateSoundclouds(options) {
 
   if (display_type == 'waveform'){  // WAVEFORM
 
-        /*$( "#slider" ).slider({
-          animate: true,
-          orientation: "vertical"
-       }); */
-        
         SC.get("/resolve", {url: track_url}, function(track){
         var waveform = new Waveform({
           container: document.getElementById("waveform"),
@@ -27,9 +21,7 @@ function hydrateSoundclouds(options) {
         });
         var ctx = waveform.context;  
         waveform.innerColor = "rgba(255,255,255,0.8)";
-        $('.play-text,.sc-logo').css("opacity", 1);
-
-        //$( "#slider" ).slider();  
+        $('.play-text,.sc-logo,.download-button').css("opacity", 1);
         // Bar function
         /*waveform.innerColor = function(x, y){
           if (Math.floor(x*500) % 3){
@@ -49,6 +41,14 @@ function hydrateSoundclouds(options) {
             $('#playpause').toggleClass('icon-play icon-pause');
             $('.play-text').css("opacity", 0);
 
+              /*var mouseX;
+              $(this).mousemove( function(e) {
+                 mouseX = e.pageX; 
+                 //console.log("mouse: " + mouseX);
+                 options.hoverPosition = mouseX;
+                 waveform.update(options);
+              });  */
+
           });
           // play button
           $("#playpause-wrapper").click(function(e) {
@@ -64,10 +64,9 @@ function hydrateSoundclouds(options) {
           });*/
           // soundcloud link
           $("a[href='http://soundcloud.com']").attr('href', track_url);
-          // fade in on load
-          //$('.apos-soundcloud-container').css({opacity: 0, visibility: "visible"}).animate({opacity: 1}, "slow");
         });
       });
+
       
     
   } else if (display_type == '360') { 
@@ -83,7 +82,6 @@ function hydrateSoundclouds(options) {
 
     }); // SC.get
 
-
     soundManager.setup({
       url: 'soundmanagerv297a-20131201/swf/',
       flashVersion: 9, // optional: shiny features (default = 8)
@@ -94,12 +92,9 @@ function hydrateSoundclouds(options) {
       }
     });
 
-
-
   } else { // SOUNDCLOUD EMBED
 
     var sounds = $("#"+String(track_name));
-    /*console.log(sounds)*/
     // loop through each soundcloud container and call the
     // SC.oEmbed method using the data-url attribute on the
     // element: 
@@ -110,20 +105,6 @@ function hydrateSoundclouds(options) {
         container.html(oEmbed.html);
       });
     });
-
-    // old 360 code
-/*      SC.get("/resolve", {url: track_url}, function(track){
-    $('#360_track').attr('href', track.uri + "/stream?client_id=" + _client_id);
-    });
-
-  soundManager.setup({
-    url: 'swf/',
-    flashVersion: 9, 
-    preferFlash: false,
-    onready: function() {
-
-    }
-  });*/
 
     } // ELSE
 
