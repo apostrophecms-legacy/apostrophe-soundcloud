@@ -28,7 +28,7 @@ function hydrateSoundclouds(options) {
             return 'rgba(255,255,255,0.0)';
           } 
         }*/
-        var parentOffset = $("#waveform").offset();
+        var waveformOffset = $("#waveform").offset();
         var width = $("#waveform").width();
         var relX;
         var playing = false;
@@ -44,7 +44,7 @@ function hydrateSoundclouds(options) {
               $('#playpause').toggleClass('icon-play icon-pause');
               $('.play-text').css("opacity", 0);
             } else {
-              relX = e.clientX - parentOffset.left;
+              relX = e.clientX - waveformOffset.left;
               scplayer.setPosition((relX/width)*scplayer.durationEstimate);
             }
           });
@@ -63,13 +63,10 @@ function hydrateSoundclouds(options) {
         // Scrubber
         $("#waveform").hover( function() {
           $(this).mousemove( function (e) {
-            relX = e.clientX - parentOffset.left;
-            options.hoverPosition = relX;
-            waveform.update(options);
+            waveform.hoverPosition =  e.clientX - waveformOffset.left;
           });
         }, function () {
-            options.hoverPosition = -10;
-            waveform.update(options);
+            waveform.hoverPosition = -10;
         });
         
       });

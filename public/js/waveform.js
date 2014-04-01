@@ -14,7 +14,7 @@
       this.outerColor = options.outerColor || "transparent";
       this.innerColor = options.innerColor || "#000000";
       this.hoverColor = "rgba(255, 255, 255, 0.2)";
-      this.hoverPosition = null;
+      this.hoverPosition;
       this.interpolate = true;
       if (options.interpolate === false) {
         this.interpolate = false;
@@ -55,10 +55,6 @@
     };
 
     Waveform.prototype.update = function(options) {
-      if (options.hoverPosition != null) {
-        this.hoverPosition = options.hoverPosition;
-      }
-
       if (options.interpolate != null) {
         this.interpolate = options.interpolate;
       }
@@ -95,17 +91,6 @@
         _results.push(i++);
       }
 
-      // Hover Waveform Overlay
-      /*for (_i = 0, _len = _ref.length; _i < this.hoverPosition; _i++) {
-        d = _ref[_i];
-        t = this.width / this.data.length;
-        if (typeof this.hoverColor === "function") {
-          this.context.fillStyle = this.hoverColor(i / this.width, d);
-        }
-        this.context.clearRect(t * i, middle - middle * d, t, middle * d * 2);
-        this.context.fillRect(t * i, middle - middle * d, t, middle * d * 2);
-        //_results.push(i++);
-      }*/
       return _results;
     };
 
