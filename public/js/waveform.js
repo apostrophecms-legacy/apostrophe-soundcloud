@@ -14,8 +14,7 @@
       this.outerColor = options.outerColor || "transparent";
       this.innerColor = options.innerColor || "#000000";
       this.hoverColor = "rgba(255, 255, 255, 0.2)";
-      this.hoverPosition;
-      this.newLocation = null;
+      this.hoverPosition = null;
       this.interpolate = true;
       if (options.interpolate === false) {
         this.interpolate = false;
@@ -57,7 +56,6 @@
 
     Waveform.prototype.update = function(options) {
       if (options.hoverPosition != null) {
-        options.data = this.data;
         this.hoverPosition = options.hoverPosition;
       }
 
