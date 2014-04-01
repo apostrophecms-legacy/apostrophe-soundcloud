@@ -15,6 +15,7 @@
       this.innerColor = options.innerColor || "#000000";
       this.hoverColor = "rgba(255, 255, 255, 0.2)";
       this.hoverPosition;
+      this.newLocation = null;
       this.interpolate = true;
       if (options.interpolate === false) {
         this.interpolate = false;
@@ -195,7 +196,12 @@
           if (!innerColorWasSet) {
             stream = this;
             that.innerColor = function(x, y) {
-              if (x < stream.position / stream.durationEstimate) {
+              // Hover
+              if ((x < this.hoverPosition/this.canvas.width + 0.0012) && (x > this.hoverPosition/this.canvas.width - 0.0012)) {
+                return "rgb(86, 203, 212)";
+              }  
+              // Normal 
+              else if (x < stream.position / stream.durationEstimate) {
                 return "rgba(13, 61, 90,0.78)";  // played color
               } else if (x < stream.bytesLoaded / stream.bytesTotal) {
                 return "rgba(255,255,255,0.8)";  // loaded color
