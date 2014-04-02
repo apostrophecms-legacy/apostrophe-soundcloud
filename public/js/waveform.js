@@ -180,7 +180,7 @@
             stream = this;
             that.innerColor = function(x, y) {
               // Hover
-              if ((x < this.hoverPosition/this.canvas.width + 0.0012) && (x > this.hoverPosition/this.canvas.width - 0.0012)) {
+              if ((x < this.hoverPosition + 0.0012) && (x > this.hoverPosition - 0.0012)) {
                 return "rgb(86, 203, 212)";
               }  
               // Normal 

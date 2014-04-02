@@ -31,6 +31,7 @@ function hydrateSoundclouds(options) {
         var waveformOffset = $("#waveform").offset();
         var width = $("#waveform").width();
         var relX;
+        var firstStart = true;
         var playing = false;
         waveform.dataFromSoundCloudTrack(track);
         var streamOptions = waveform.optionsForSyncedStream();
@@ -38,12 +39,18 @@ function hydrateSoundclouds(options) {
           // waveform
           $("#waveform").click(function(e) {
             e.preventDefault();
-            if (!playing) {
+            if (firstStart) {
               scplayer.togglePause();
+              firstStart = !firstStart;
               playing = true;
               $('#playpause').toggleClass('icon-play icon-pause');
               $('.play-text').css("opacity", 0);
             } else {
+              if (!playing) {
+                scplayer.togglePause();
+                playing = !playing;
+                $('#playpause').toggleClass('icon-play icon-pause');
+              }
               relX = e.clientX - waveformOffset.left;
               scplayer.setPosition((relX/width)*scplayer.durationEstimate);
             }
@@ -51,10 +58,14 @@ function hydrateSoundclouds(options) {
 
           // play button
           $(".playpause-button").click(function(e) {
+            playing = !playing;
             e.preventDefault();
             scplayer.togglePause();
-            $('.play-text').css("opacity", 0);
             $("#playpause").toggleClass('icon-play icon-pause');
+            if (firstStart){
+              $('.play-text').css("opacity", 0);
+              firstStart = !firstStart;
+            }
           });
           // soundcloud link
           $("a[href='http://soundcloud.com']").attr('href', track_url);
@@ -63,10 +74,12 @@ function hydrateSoundclouds(options) {
         // Scrubber
         $("#waveform").hover( function() {
           $(this).mousemove( function (e) {
-            waveform.hoverPosition =  e.clientX - waveformOffset.left;
+            waveform.hoverPosition =  (e.clientX - waveformOffset.left)/width;
+            waveform.redraw();
           });
         }, function () {
             waveform.hoverPosition = -10;
+            waveform.redraw();
         });
         
       });
