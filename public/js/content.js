@@ -13,74 +13,86 @@ function hydrateSoundclouds(options) {
   if (display_type == 'waveform'){  // WAVEFORM
 
         SC.get("/resolve", {url: track_url}, function(track){
-        var waveform = new Waveform({
-          container: document.getElementById("waveform"),
-          interpolate: false
-        });
-        var ctx = waveform.context;  
-        waveform.innerColor = "rgba(255,255,255,0.8)";
-        $('.play-text,.sc-logo,.download-button,.playpause-button').css("opacity", 1);
-        // Bar function
-        /*waveform.innerColor = function(x, y){
-          if (Math.floor(x*500) % 3){
-            return 'rgba(255,255,255,1)';
-          } else {
-            return 'rgba(255,255,255,0.0)';
-          } 
-        }*/
-        var waveformOffset = $("#waveform").offset();
-        var width = $("#waveform").width();
-        var relX;
-        var firstStart = true;
-        var playing = false;
-        waveform.dataFromSoundCloudTrack(track);
-        var streamOptions = waveform.optionsForSyncedStream();
-        SC.stream(track.uri, streamOptions, function(scplayer){
-          // waveform
-          $("#waveform").click(function(e) {
-            e.preventDefault();
-            if (firstStart) {
-              scplayer.togglePause();
-              firstStart = !firstStart;
-              playing = true;
-              $('#playpause').toggleClass('icon-play icon-pause');
-              $('.play-text').css("opacity", 0);
+          var waveform = new Waveform({
+            container: document.getElementById("waveform"),
+            interpolate: false
+          });
+          var ctx = waveform.context;  
+          waveform.innerColor = "rgba(255,255,255,0.8)";
+          $('.play-text,.sc-logo,.download-button,.playpause-button').css("opacity", 1);
+          // Bar function
+          /*waveform.innerColor = function(x, y){
+            if (Math.floor(x*500) % 3){
+              return 'rgba(255,255,255,1)';
             } else {
-              if (!playing) {
+              return 'rgba(255,255,255,0.0)';
+            } 
+          }*/
+          var waveformOffset = $("#waveform").offset();
+          var width = $("#waveform").width();
+          var relX;
+          var firstStart = true;
+          var playing = false;
+          waveform.dataFromSoundCloudTrack(track);
+          var streamOptions = waveform.optionsForSyncedStream();
+          SC.stream(track.uri, streamOptions, function(scplayer){
+            // waveform
+            $("#waveform").click(function(e) {
+              e.preventDefault();
+              if (firstStart) {
                 scplayer.togglePause();
-                playing = !playing;
+                firstStart = !firstStart;
+                playing = true;
                 $('#playpause').toggleClass('icon-play icon-pause');
+                $('.play-text').css("opacity", 0);
+              } else {
+                if (!playing) {
+                  scplayer.togglePause();
+                  playing = !playing;
+                  $('#playpause').toggleClass('icon-play icon-pause');
+                }
+                relX = e.clientX - waveformOffset.left;
+                scplayer.setPosition((relX/width)*scplayer.durationEstimate);
               }
-              relX = e.clientX - waveformOffset.left;
-              scplayer.setPosition((relX/width)*scplayer.durationEstimate);
+            });
+
+            // play button
+            $(".playpause-button").click(function(e) {
+              playing = !playing;
+              e.preventDefault();
+              scplayer.togglePause();
+              $("#playpause").toggleClass('icon-play icon-pause');
+              if (firstStart){
+                $('.play-text').css("opacity", 0);
+                firstStart = !firstStart;
+              }
+            });
+            // soundcloud link
+            $("a[href='http://soundcloud.com']").attr('href', track_url);
+          });
+
+
+          var hovering = false;
+
+          $('#waveform').mousemove( function (e) {
+            if(hovering) {
+              waveform.hoverPosition =  (e.clientX - waveformOffset.left)/width;
+              if(!playing){
+                waveform.redraw();
+              }
             }
           });
 
-          // play button
-          $(".playpause-button").click(function(e) {
-            playing = !playing;
-            e.preventDefault();
-            scplayer.togglePause();
-            $("#playpause").toggleClass('icon-play icon-pause');
-            if (firstStart){
-              $('.play-text').css("opacity", 0);
-              firstStart = !firstStart;
-            }
+          // Scrubber
+          $("#waveform").hover( function() {
+            hovering = true;
+          }, function () {
+              hovering = false;
+              waveform.hoverPosition = -10;
+              if(!playing){
+                waveform.redraw();
+              }
           });
-          // soundcloud link
-          $("a[href='http://soundcloud.com']").attr('href', track_url);
-        });
-
-        // Scrubber
-        $("#waveform").hover( function() {
-          $(this).mousemove( function (e) {
-            waveform.hoverPosition =  (e.clientX - waveformOffset.left)/width;
-            waveform.redraw();
-          });
-        }, function () {
-            waveform.hoverPosition = -10;
-            waveform.redraw();
-        });
         
       });
 
