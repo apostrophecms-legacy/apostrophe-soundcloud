@@ -93,6 +93,14 @@ function hydrateSoundclouds(options) {
                 waveform.redraw();
               }
           });
+
+          window.onresize = function(event) {
+            $('#wavform,canvas').eq(0).width(window.innerWidth*.7);
+            $('#wavform,canvas').eq(0).height(90);
+            width = $("#waveform").width();
+            waveformOffset = $("#waveform").offset();
+            waveform.redraw();
+          };
         
       });
 
