@@ -22,7 +22,11 @@
 #waveform {
     width: 70%;
     height: 90px;
-    margin: 2px auto 15px auto;    
+    margin: 2px auto 15px auto; 
+    @media (max-width: 900px)
+    {
+      width: 85%;
+    }   
 }
 #waveform:hover {
     cursor: pointer;
@@ -44,11 +48,17 @@
   color: rgba(0, 0, 0, 0.5);
   opacity: 0;
   .transition(all .2s ease-in-out);
+  @media (max-width: 900px)
+  {
+    position: relative;
+    margin: 0 auto;
+    top: 50px
+  }
 }
 .sc-logo
 {
   position: absolute;
-  right: 11.8%;
+  left: 10.7%;
   bottom: 70px;
   opacity: 0;
   .transition(opacity .2s ease-in-out);
@@ -63,12 +73,19 @@
     opacity: 1;
     .transition(opacity .2s ease-in-out);
   }
+  @media (max-width: 900px)
+  {
+    position: relative;
+    margin: 0 auto;
+    left: -20px;
+    top: 33px;
+  }
 }
 .download-button
 {
   position: absolute;
   bottom: 28px;
-  right: 12.15%;
+  left: 11%;
   opacity: 0;
   .transition(opacity .2s ease-in-out);
   img 
@@ -98,6 +115,14 @@
   .download-button;
   cursor: pointer;
   font-size: 0.8em;
+  @media (max-width: 900px)
+  {
+    position: relative;
+    margin: 0 auto;
+    left: 30px;
+    top: 2px;
+    //bottom: 120px;
+  }
 }
 
 .volume-container
