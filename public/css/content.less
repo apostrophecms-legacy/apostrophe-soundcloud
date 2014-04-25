@@ -1,17 +1,4 @@
-.font-size(@rem)
-{
-    font-size: round(@rem * @root-font-size) * 1px;
-    font-size: @rem * 1rem;
-}
-
-@font-face {font-family: 'CaeciliaLTPro-56Italic';src: url('/fonts/2A34EE_0_0.eot');src: url('/fonts/2A34EE_0_0.eot?#iefix') format('embedded-opentype'),url('/fonts/2A34EE_0_0.woff') format('woff'),url('/fonts/webfonts/2A34EE_0_0.ttf') format('truetype');}
-
-.Caecilia-Italic(@font-size: 1.0)
-{
-    font-family: 'CaeciliaLTPro-56Italic';
-    .font-size(@font-size); 
-}
-
+// Add apos prefix to classes
 
 .transition(@props)
 {
@@ -59,6 +46,7 @@
   cursor: pointer;
   width: 70%;
   margin: 0 auto;
+  //.Caecilia-Italic(80%);
   color: rgba(0, 0, 0, 0.5);
   opacity: 0;
   .transition(all .2s ease-in-out);
