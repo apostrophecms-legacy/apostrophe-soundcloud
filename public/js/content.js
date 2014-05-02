@@ -33,10 +33,16 @@ function hydrateSoundclouds(options) {
           var relX;
           var firstStart = true;
           var playing = false;
+          if (track.download_url != undefined ) {
+             var dwld = track.download_url + "?client_id=" + _client_id;
+          }
+          console.log(dwld);
+         
           waveform.dataFromSoundCloudTrack(track);
           var streamOptions = waveform.optionsForSyncedStream();
           SC.stream(track.uri, streamOptions, function(scplayer){
             // waveform
+
             $("#waveform").click(function(e) {
               e.preventDefault();
               if (firstStart) {
@@ -69,6 +75,13 @@ function hydrateSoundclouds(options) {
             });
             // soundcloud link
             $("a[href='http://soundcloud.com']").attr('href', track_url);
+            if (dwld != undefined){
+               $(".download-button").find("a").attr('href', dwld);
+             } else { 
+              $(".download-button").find("i").css("color", "#333");
+              $(".download-button").css("pointer-events","none");
+            }
+           
           });
 
 
