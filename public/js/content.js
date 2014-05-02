@@ -36,7 +36,6 @@ function hydrateSoundclouds(options) {
           if (track.download_url != undefined ) {
              var dwld = track.download_url + "?client_id=" + _client_id;
           }
-          console.log(dwld);
          
           waveform.dataFromSoundCloudTrack(track);
           var streamOptions = waveform.optionsForSyncedStream();
