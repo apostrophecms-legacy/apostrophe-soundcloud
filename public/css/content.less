@@ -60,15 +60,15 @@
 .sc-logo
 {
   position: absolute;
-  left: 11%;
-  bottom: 80px;
+  left: 10.7%;
+  bottom: 70px;
   opacity: 0;
   .transition(opacity .2s ease-in-out);
   img 
   {
     opacity: 0.8;
-    height: 20px;
-    width: 20px; 
+    height: 30px;
+    width: 30px; 
   }
   img:hover
   {
@@ -79,29 +79,32 @@
   {
     position: relative;
     margin: 0 auto;
-    left: -30px;
-    top: 30px;
+    left: -20px;
+    top: 33px;
   }
 }
 .download-button
 {
   position: absolute;
-  bottom: 56px;
+  bottom: 28px;
   left: 11%;
   opacity: 0;
   .transition(opacity .2s ease-in-out);
-  @media (max-width: 900px)
+  img 
   {
-    position: relative;
-    margin: 0 auto;
-    left: 40px;
-    top: -23px;
-    //bottom: 120px;
+    opacity: 0.8;
+    height: 25px;
+    width: 25px; 
+  }
+  img:hover
+  {
+    opacity: 1;
+    .transition(opacity .2s ease-in-out);
   }
   i 
   {
     color: rgba(255, 255, 255, 0.8);
-    font-size: 1.4em;
+    font-size: 2em;
     .transition(color .2 ease-in-out);
   }
   i:hover
@@ -112,21 +115,15 @@
 .playpause-button
 {
   .download-button;
-  bottom: 20px;
-  left: 11.1%;
   cursor: pointer;
   font-size: 0.8em;
   @media (max-width: 900px)
   {
     position: relative;
     margin: 0 auto;
-    left: 6px;
+    left: 30px;
     top: 2px;
     //bottom: 120px;
-  }
-  i 
-  {
-    font-size: 2.2em;
   }
 }
 

@@ -1,16 +1,15 @@
 {% extends "baseWidgetEditor.html" %}
 
-{% block widgetVars %}
-  {% set widgetClass = 'apos-soundcloud-editor' %}
+{% block modalClass %}
+  apos-widget-editor
+  apos-soundcloud-editor
 {% endblock %}
 
-{% block title %}
+{% block modalLabel %}
   Soundcloud
 {% endblock %}
 
-
-
-{% block formBody %}
+{#{% block formBody %}
 	<label>TYPE</label>
 		  <select class="apos-soundcloud-display_type">
 			  <option value="waveform">Waveform</option>
@@ -22,13 +21,15 @@
 	<label>URL</label>
   <input class="apos-soundcloud-url" type="text" name="url" />	  
   Button
-{% endblock %}
+{% endblock %}#}
 
-{% block instructions %}
-  Enter the URL of your soundcloud sound.
+{% block modalInstructions %}
+  Enter the URL of your soundcloud track.
 {% endblock %}
 
 {% block formBody %}
+<fieldset class="apos-fieldset">
   <label>URL</label>
   <input class="apos-soundcloud-url" type="text" name="url" />
+</fieldset>
 {% endblock %}
