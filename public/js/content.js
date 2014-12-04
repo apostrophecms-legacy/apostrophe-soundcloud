@@ -50,6 +50,11 @@ function hydrateSoundclouds(options) {
                 playing = true;
                 $('#playpause').toggleClass('icon-play icon-pause');
                 $('.play-text').css("opacity", 0);
+
+                // GA Custom Metric Event
+                if (ga) {
+                  ga('send', 'event', 'Soundcloud Track', 'Play', { 'metric7': 1 });
+                }
               } else {
                 if (!playing) {
                   scplayer.togglePause();
@@ -70,6 +75,10 @@ function hydrateSoundclouds(options) {
               if (firstStart){
                 $('.play-text').css("opacity", 0);
                 firstStart = !firstStart;
+                // GA Custom Metric Event
+                if (ga) {
+                  ga('send', 'event', 'Soundcloud Track', 'Play', { 'metric7': 1 });
+                }
               }
             });
             // soundcloud link
