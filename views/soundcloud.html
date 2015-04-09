@@ -15,11 +15,15 @@
 	{% if options.trackUrl and options.trackUrl.length %}
 
 	<div class="download-track-button wv-download-btn" data-item-id="{{options.itemId}}" data-item-title="{{options.title}}" data-episode><i class="icon-download"></i></div>
+
+	{% endif %}
 	
 	<div id='waveform'>
 		<div class="play-text">Click to Play</div>
 	</div>
 	</div>
+
+	{% if options.trackUrl and options.trackUrl.length %}
 
 	{# EMAIL MODAL #}
 	<div class="wv-download-modal-bg wv-close-modal"></div>
