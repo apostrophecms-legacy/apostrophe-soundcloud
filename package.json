@@ -22,20 +22,34 @@
     "url": "https://github.com/punkave/apostrophe-soundcloud/issues"
   },
   "homepage": "https://github.com/punkave/apostrophe-soundcloud",
-  "devDependencies": {
-    },
+  "devDependencies": {},
   "keywords": [
     "soundcloud",
     "cms",
     "apostrophe"
   ],
-  "readme": "apostrophe-soundcloud\n=====================\n",
-  "readmeFilename": "README.md",
-  "_id": "apostrophe-soundcloud@0.0.1",
+  "_id": "apostrophe-soundcloud@0.0.44",
   "dist": {
-    "shasum": "a4861da6eaf42ef58ff9741bc4068f98fa251187"
+    "shasum": "c11ab3b73cca772ebb3af9f3834d40a280eb9dbd",
+    "tarball": "http://registry.npmjs.org/apostrophe-soundcloud/-/apostrophe-soundcloud-0.0.44.tgz"
   },
-  "_from": "apostrophe-soundcloud@0.0.1",
-  "_resolved": "https://registry.npmjs.org/apostrophe-soundcloud/-/apostrophe-soundcloud-0.0.1.tgz"
-
+  "_from": "apostrophe-soundcloud@",
+  "_resolved": "https://registry.npmjs.org/apostrophe-soundcloud/-/apostrophe-soundcloud-0.0.44.tgz",
+  "_npmVersion": "1.4.6",
+  "_npmUser": {
+    "name": "mcoppola",
+    "email": "coppola@punkave.com"
+  },
+  "maintainers": [
+    {
+      "name": "colpanik",
+      "email": "kerry@punkave.com"
+    },
+    {
+      "name": "mcoppola",
+      "email": "coppola@punkave.com"
+    }
+  ],
+  "directories": {},
+  "_shasum": "c11ab3b73cca772ebb3af9f3834d40a280eb9dbd"
 }

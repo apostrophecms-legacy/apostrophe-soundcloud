@@ -12,13 +12,115 @@
 	<div class="playpause-button"><i id="playpause" class="icon-play"></i></div>
 
 <!-- 	<div class="download-button"><a target="_blank" href="http://soundcloud.com"><img src="/modules/soundcloud/images/download.png"></a></div> -->
+	{% if options.trackUrl and options.trackUrl.length %}
 
-<!-- 	<div class="download-button"><a target="_blank" href="http://soundcloud.com"><i class="icon-download"></i></a></div> -->
+	<div class="download-track-button wv-download-btn" data-item-id="{{options.itemId}}" data-item-title="{{options.title}}" data-episode><i class="icon-download"></i></div>
 	
 	<div id='waveform'>
 		<div class="play-text">Click to Play</div>
 	</div>
 	</div>
+
+	{# EMAIL MODAL #}
+	<div class="wv-download-modal-bg wv-close-modal"></div>
+	<div class="wv-download-modal">
+		<i class="icon-remove wv-close-modal"></i>
+		<div class="download-modal-title"></div>
+		<div class="download-modal-body">
+			<div class="download-modal-email">
+				Email a link to my free download to:
+				<form class="download-form" action="">
+					<input class="download-email" type="text" placeholder="email">
+					<div class="download-sub">
+						Your email will not be shared with third parties.  You will be added to the Weathervane Music mailing list, from which you can unsubscribe at any time.
+					</div>
+					<input class="download-submit" type="submit" name="submit" value="Submit" /></button>
+					<img class="download-loader" src="/images/ajax-loader.gif" style="width: 16px; height: 16px">
+				</form>
+				<div class="wv-success">Thank you!<br><br>Please check your inbox for a download link. <div class="wv-close wv-close-modal">Close</div></div>
+				<div class="wv-failure">Server Error.<div class="wv-close wv-close-modal">Close</div></div>
+			</div>
+		</div>
+	</div>
+
+	{# DOWNLOAD + EMAIL CAPTURE SCRIPT #}
+	<script>
+	$(function(){
+
+		var $downloadBtn = $('.wv-download-btn'),
+			$modal = $('.wv-download-modal'),
+			$modalTitle = $('.download-modal-title'),
+			$bg = $('.wv-download-modal-bg'),
+			$close = $('.wv-close-modal'),
+			$email = $('.download-email'),
+			$submit = $('.download-submit'),
+			$bucket = $('.download-modal-email'),
+			$loader = $('.download-loader'),
+			$success = $('.wv-success'),
+			$failure = $('.wv-failure'),
+			origin = $bucket.html(),
+			url = location.origin + '/apos/wv-download',
+			id, email;
+
+		$downloadBtn.click(function(e){
+
+			// Set title, ID
+			var title = $(this).attr('data-item-title');
+			id = $(this).attr('data-item-id');
+
+			$modalTitle.html(title);
+
+			$modal.addClass('show');
+			$bg.addClass('show');
+		});
+
+		$close.click(function(e){
+			$modal.removeClass('show');
+			$bg.removeClass('show');
+			setTimeout(function(){
+				$failure.removeClass('show');
+				$success.removeClass('show');
+				$submit.attr('value', 'Submit');
+			}, 300);
+			
+
+		});
+
+		$submit.click(function(e){
+
+			e.preventDefault();
+
+			email = $email.val();
+			$submit.attr('value', '');
+			$loader.addClass('show');
+
+			$.ajax({
+				type: 'POST',
+				url: url,
+				data: {
+					id: id,
+					email: email,
+					episode: true
+				},
+				success: function() {
+
+					$success.addClass('show');
+					$loader.removeClass('show');
+					console.log('success');
+				},
+				error: function() {
+
+					$failure.addClass('show');
+					$loader.removeClass('show');
+					console.log('failure');
+				}
+			});
+		});
+	});
+	</script>
+	{% endif %}
+
+
 
 {%  elif options.display_type == "360" %}
 
