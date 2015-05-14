@@ -79,7 +79,7 @@
   {
     position: relative;
     margin: 0 auto;
-    left: -20px;
+    left: -4px;
     top: 33px;
   }
 }
@@ -112,29 +112,44 @@
     color: rgba(255, 255, 255, 1);
   }
 }
-.playpause-button
+.episode-marquee-sc .apos-soundcloud-container .playpause-button
 {
   .download-button;
   cursor: pointer;
   font-size: 0.8em;
   @media (max-width: 900px)
   {
-    position: relative;
+    position: absolute;
     margin: 0 auto;
-    left: 30px;
-    top: 2px;
+    left: 40%;
+    top: 5px !important;
     //bottom: 120px;
+  }
+  @media (max-width: 550px)
+  {
+    left: 35%;
   }
 }
 
 .download-track-button
 {
   position: absolute;
-  bottom: 28px;
+  bottom: 42px;
   right: 11%;
 
   color: rgba(255, 255, 255, 0.8);
   font-size: 2em;
+
+
+  @media (max-width: 900px)
+  {
+    top: 2px;
+    right: 40%;
+  }
+  @media (max-width: 550px)
+  {
+    right: 35%;
+  }
 
   i:hover
   {
