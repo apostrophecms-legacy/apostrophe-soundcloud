@@ -86,8 +86,6 @@
 				$success.removeClass('show');
 				$submit.attr('value', 'Submit');
 			}, 300);
-			
-
 		});
 
 		$submit.click(function(e){
@@ -110,16 +108,27 @@
 
 					$success.addClass('show');
 					$loader.removeClass('show');
-					console.log('success');
 				},
 				error: function() {
 
 					$failure.addClass('show');
 					$loader.removeClass('show');
-					console.log('failure');
 				}
 			});
 		});
+
+
+		// URL param to open the modal on page load
+		if (window.location.href.toLowerCase().indexOf('dl=1') > -1) {
+
+			if ($downloadBtn.length == 1) {
+				var title = $downloadBtn.attr('data-item-title');
+				id = $downloadBtn.attr('data-item-id');
+				$modalTitle.html(title);
+				$modal.addClass('show');
+				$bg.addClass('show');
+			}
+		}
 	});
 	</script>
 	{% endif %}
