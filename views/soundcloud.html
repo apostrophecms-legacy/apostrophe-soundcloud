@@ -25,29 +25,10 @@
 
 	{% if options.trackUrl and options.trackUrl.length %}
 
-	{# EMAIL MODAL #}
-	<div class="wv-download-modal-bg wv-close-modal"></div>
-	<div class="wv-download-modal">
-		<i class="icon-remove wv-close-modal"></i>
-		<div class="download-modal-title"></div>
-		<div class="download-modal-body">
-			<div class="download-modal-email">
-				Email a link to my free download to:
-				<form class="download-form" action="">
-					<input class="download-email" type="text" placeholder="email">
-					<div class="download-sub">
-						Your email will not be shared with third parties.  You will be added to the Weathervane Music mailing list, from which you can unsubscribe at any time.
-					</div>
-					<input class="download-submit" type="submit" name="submit" value="Submit" /></button>
-					<img class="download-loader" src="/images/ajax-loader.gif" style="width: 16px; height: 16px">
-				</form>
-				<div class="wv-success">Thank you!<br><br>Please check your inbox for a download link. <div class="wv-close wv-close-modal">Close</div></div>
-				<div class="wv-failure">Server Error.<div class="wv-close wv-close-modal">Close</div></div>
-			</div>
-		</div>
-	</div>
+
 
 	{# DOWNLOAD + EMAIL CAPTURE SCRIPT #}
+	{# * marup on episode page #}
 	<script>
 	$(function(){
 
