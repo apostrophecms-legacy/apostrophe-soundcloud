@@ -1,6 +1,6 @@
 ## apostrophe-soundcloud
 
-A simple, style-able Soundcloud widget for Apostrophe.
+A simple, style-able Soundcloud widget for [Apostrophe](http://apostrophenow.org/).
 
 You must have a Soundcloud client id in order to use this module. To obtain a client id, log in to SoundCloud and register an "application" on [this page](http://soundcloud.com/you/apps). It doesn't take long.
 
