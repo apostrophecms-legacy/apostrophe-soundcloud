@@ -1,0 +1,47 @@
+{
+  "name": "apostrophe-soundcloud",
+  "version": "0.5.0",
+  "description": "It's soundcloud for apostrophe.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/punkave/apostrophe-soundcloud"
+  },
+  "author": {
+    "name": "P'unk Avenue"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "extend": "*"
+  },
+  "bugs": {
+    "url": "https://github.com/punkave/apostrophe-soundcloud/issues"
+  },
+  "homepage": "https://github.com/punkave/apostrophe-soundcloud",
+  "devDependencies": {},
+  "keywords": [
+    "soundcloud",
+    "cms",
+    "apostrophe"
+  ],
+  "_from": "apostrophe-soundcloud@",
+  "_npmUser": {
+    "name": "mcoppola",
+    "email": "coppola@punkave.com"
+  },
+  "maintainers": [
+    {
+      "name": "colpanik",
+      "email": "kerry@punkave.com"
+    },
+    {
+      "name": "mcoppola",
+      "email": "coppola@punkave.com"
+    }
+  ],
+  "directories": {},
+  "_shasum": "c11ab3b73cca772ebb3af9f3834d40a280eb9dbd"
+}

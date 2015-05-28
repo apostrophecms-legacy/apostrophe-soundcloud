@@ -1,0 +1,21 @@
+{% extends "baseWidgetEditor.html" %}
+
+{% block modalClass %}
+  apos-widget-editor
+  apos-soundcloud-editor
+{% endblock %}
+
+{% block modalLabel %}
+  Soundcloud
+{% endblock %}
+
+{% block modalInstructions %}
+  Enter the URL of your soundcloud track.
+{% endblock %}
+
+{% block formBody %}
+	<fieldset class="apos-fieldset">
+	  <label>URL</label>
+	  <input class="apos-soundcloud-url" type="text" name="url" />
+	</fieldset>
+{% endblock %}
