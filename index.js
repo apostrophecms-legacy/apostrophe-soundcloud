@@ -25,9 +25,12 @@ function Construct(options, callback) {
   self._apos.mixinModuleAssets(self, 'soundcloud', __dirname, options);
 
   self.pushAsset('template', 'soundcloudEditor', { when: 'user' });
+  self.pushAsset('script', 'editor', { when: 'user' });
+
   self.pushAsset('script', 'vendor/soundcloud', { when: 'always' });
   self.pushAsset('script', 'vendor/waveform', { when: 'always' });
   self.pushAsset('script', 'content', { when: 'always' });
+
   self.pushAsset('stylesheet', 'content', { when: 'always' });
 
   self._apos.pushGlobalCallWhen('always', 'sc.connect(?)', { 
@@ -41,7 +44,7 @@ function Construct(options, callback) {
     css: 'soundcloud',
     icon: 'volume-up',
     renderWidget: function(data) {
-      data.options.clientId = self.clientId;
+      // data.options.clientId = self.clientId;
       return self._apos.partial('soundcloud', data, self._dirs.map(function(dir) { return dir + '/views'; }) );
     }
   };
