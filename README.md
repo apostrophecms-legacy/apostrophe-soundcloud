@@ -25,9 +25,11 @@ Now in a template, you can simply call the widget as an `aposSingleton`
 
 You can also add it to the controls aray of an `aposArea` to make it available in the "Add Content" menu
 
+```javascript
 {{ aposArea(page, 'mixed', {
   controls: ['style', 'bold', 'italic', 'slideshow', 'soundcloud']
 }) }}
+```
 
 ### configuration
 
