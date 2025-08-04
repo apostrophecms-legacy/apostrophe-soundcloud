@@ -1,3 +1,7 @@
+# ⛔️ **DEPRECATED** — do not use for new projects
+
+See [our current docs](https://docs.apostrophecms.org/)
+
 ## apostrophe-soundcloud
 
 A simple, style-able Soundcloud widget for [Apostrophe](http://apostrophenow.org/).
